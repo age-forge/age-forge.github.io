@@ -5,7 +5,7 @@ export default defineConfig({
   description: "Tools, benchmarks, and ecosystem projects for Apache AGE",
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'AGE Forge' }],
     ['meta', { property: 'og:description', content: 'Tools, benchmarks, and ecosystem projects for Apache AGE' }],
