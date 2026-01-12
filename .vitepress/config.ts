@@ -9,6 +9,12 @@ export default defineConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'AGE Forge' }],
     ['meta', { property: 'og:description', content: 'Tools, benchmarks, and ecosystem projects for Apache AGE' }],
+    // Umami Analytics
+    ['script', {
+      defer: '',
+      src: 'https://analytics.compulife.com.pk/script.js',
+      'data-website-id': '3e8236f6-6c35-4a22-9857-db9b5d3cdf24'
+    }],
   ],
 
   themeConfig: {
