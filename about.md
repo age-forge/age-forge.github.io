@@ -13,12 +13,25 @@ Make Apache AGE a first-class choice for graph database applications by providin
 
 ## Why AGE?
 
-Apache AGE brings graph database capabilities to PostgreSQL:
+Apache AGE brings graph database capabilities to PostgreSQL. This matters most when **PostgreSQL is already your primary database**:
+
+### The PostgreSQL Advantage
+
+If you're already running PostgreSQL, adding AGE means:
+
+- **No new infrastructure** - No separate database cluster to deploy, secure, or maintain
+- **Existing ops work unchanged** - Your backups, monitoring, replication, and connection pooling cover graph data automatically
+- **Single source of truth** - Relational and graph data live together with full ACID guarantees
+- **Unified access control** - PostgreSQL roles and permissions apply to graph data
+- **Lower TCO** - One database to license, host, and operate instead of two
+
+### Technical Benefits
 
 - **Open Source** - Apache 2.0 license, no vendor lock-in
-- **PostgreSQL Foundation** - ACID transactions, mature tooling, proven reliability
 - **Cypher Support** - Industry-standard graph query language
-- **Hybrid Queries** - Combine graph traversals with SQL in the same database
+- **Hybrid Queries** - Combine graph traversals with SQL in a single query
+- **ACID Transactions** - Graph mutations participate in PostgreSQL transactions
+- **PostgreSQL Ecosystem** - Works with PgBouncer, pgAdmin, existing ORMs, and all your favorite tools
 
 ## Background
 
