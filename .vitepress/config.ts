@@ -22,12 +22,27 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Docs', link: '/docs/' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Projects', link: '/projects/' },
       { text: 'About', link: '/about' }
     ],
 
     sidebar: {
+      '/docs/': [
+        {
+          text: 'age-orm',
+          items: [
+            { text: 'Introduction', link: '/docs/' },
+            { text: 'Getting Started', link: '/docs/getting-started' },
+            { text: 'Tutorial', link: '/docs/tutorial' },
+            { text: 'Query Builder', link: '/docs/query-builder' },
+            { text: 'Relationships', link: '/docs/relationships' },
+            { text: 'Events', link: '/docs/events' },
+            { text: 'API Reference', link: '/docs/api-reference' },
+          ]
+        }
+      ],
       '/blog/': [
         {
           text: 'Blog Posts',
