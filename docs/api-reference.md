@@ -85,7 +85,7 @@ Async mirror of `Database`. All methods are `async`. Supports `async with AsyncD
 | `delete(entity)` | `None` | Delete an entity (DETACH DELETE for vertices). |
 | `connect(from_v, edge, to_v)` | `Edge` | Create an edge between two vertices. |
 | `query(model_class)` | `Query[T]` | Create a query builder. |
-| `cypher(statement, **params)` | `list` | Execute raw Cypher. Auto-hydrates vertex/edge results into model instances. |
+| `cypher(statement, columns=None, **params)` | `list` | Execute raw Cypher. Auto-hydrates vertex/edge results into model instances. When `columns` is provided, results use named keys instead of `col_0`/`col_1` and scalar values are unwrapped from `{"value": x}`. Column names are quoted in SQL to avoid reserved-word conflicts. |
 | `traverse(vertex, edge_label, ...)` | `list` | Traverse from a vertex along edges. Auto-hydrates results into model instances. |
 | `expand(vertex, ...)` | `None` | Populate vertex._relations with hydrated model instances. |
 | `bulk_add(entities)` | `list[Vertex]` | Bulk insert vertices via SQL. |

@@ -232,7 +232,9 @@ If a result's label doesn't match any defined model class, it falls back to a ra
 
 ## Raw Cypher Queries
 
-For complex queries, use `graph.cypher()`. Results that are vertices or edges are automatically converted to model instances when their label matches a defined model class:
+For complex queries, use `graph.cypher()`. Results that are vertices or edges are automatically converted to model instances when their label matches a defined model class.
+
+When you pass `columns=`, results are returned as dicts keyed by your column names (instead of generic `col_0`, `col_1` keys), and scalar values like `{"value": 3}` are automatically unwrapped:
 
 ```python
 # Vertex results are auto-hydrated into model instances
@@ -243,20 +245,32 @@ results = graph.cypher(
 alice = results[0]  # Person(name='Alice', age=30)
 print(alice.name)   # "Alice"
 
-# Scalar results remain as dicts
-results = graph.cypher("MATCH (n:Person) RETURN count(n)")
-total = results[0]["value"]  # 3
+# Scalar results with named columns
+results = graph.cypher(
+    "MATCH (n:Person) RETURN count(n)",
+    columns=["total"]
+)
+total = results[0]["total"]  # 3
 
-# Multi-column results hydrate each column independently
+# Multi-column results with named keys and auto-hydration
 results = graph.cypher(
     "MATCH (a:Person)-[e:KNOWS]->(b:Person) RETURN a, e, b",
     columns=["a", "e", "b"]
 )
 row = results[0]
-row["col_0"]  # Person instance
-row["col_1"]  # Knows instance
-row["col_2"]  # Person instance
+row["a"]  # Person instance
+row["e"]  # Knows instance
+row["b"]  # Person instance
+
+# Scalar columns are unwrapped automatically
+results = graph.cypher(
+    "MATCH (n:Person) RETURN n.name, n.age",
+    columns=["name", "age"]
+)
+results[0]  # {"name": "Alice", "age": 30}
 ```
+
+Column names are automatically quoted in SQL, so reserved words like `count`, `order`, etc. work safely as column names.
 
 ## Bulk Operations
 
